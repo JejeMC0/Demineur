@@ -61,7 +61,6 @@ void afficherGrille(int taille_grille, char grille_utilisateur[taille_grille][ta
 
 
 
-
 /**
  * @brief Obtient l'entrée de l'utilisateur pour une action sur la grille.
  *

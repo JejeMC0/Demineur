@@ -3,6 +3,8 @@
 //
 
 #include "initialisation.h"
+
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -140,7 +142,7 @@ int mineDifficulte(regle Configuration) {
     printf("%f \n", nb_mine);
 
     // Convertit la valeur float du nombre de mines en un entier et retourne cette valeur.
-    return (int)nb_mine;
+    return (int)roundf(nb_mine);
 }
 
 

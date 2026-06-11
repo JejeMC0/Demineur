@@ -190,7 +190,7 @@ void revelerCase(int x, int y, int taille_grille, int mines[taille_grille][taill
  */
 void appliquerBonusMalus(int valeur_case, int *vies, int *tours_brouillage, char *case_utilisateur) {
     if (valeur_case == 10) {
-        *tours_brouillage = 3;
+        *tours_brouillage = 2;
         printf("\nMALUS ! Brouillage active ! Vous ne voyez plus rien pendant 2 tours !\n");
     }
     else if (valeur_case == 11) {

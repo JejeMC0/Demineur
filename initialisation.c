@@ -300,6 +300,8 @@ void generePosition1UP(int nb_caseUP, int taille_grille, int mines[taille_grille
  * @return 1 si la valeur cible est trouvée dans le tableau, 0 sinon.
  */
 
+// Est ce qu'on s'en sert??
+
 int verificationTableau (int valeur_cible, int taille_grille, int tabAverif[taille_grille][taille_grille]) {
     int x = 0;
     for (int i = 0; i < taille_grille; i++) {

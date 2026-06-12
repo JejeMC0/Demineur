@@ -34,13 +34,13 @@ int selectionnerOptionMenu() {
 
     // Boucle tant que le choix n'est pas 1, 2 ou 3.  Cette boucle assure
     // que l'utilisateur entre une option valide du menu.
-    do {
+    while (choix != 1 && choix != 2 && choix != 3)
+    {
+        printf("Choix invalide. Veuillez choisir parmi 1, 2 ou 3.\n");
         printf("Votre choix : ");
         scanf("%d", &choix);
-        if (choix != 1 && choix != 2 && choix != 3) {
-            printf("Choix invalide. Veuillez choisir parmi 1, 2 ou 3.\n");
-        }
-    } while (choix != 1 && choix != 2 && choix != 3);
+    }
+    
 
     // Retourne le choix de l'utilisateur.  Ceci est la valeur qui sera utilisée
     // par le code appelant pour déterminer quelle action effectuer.

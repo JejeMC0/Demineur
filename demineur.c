@@ -1,8 +1,6 @@
 #include "demineur.h"
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
 /**
  * @brief Convertit une position linéaire en coordonnées de grille (x, y).

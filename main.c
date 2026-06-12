@@ -141,10 +141,10 @@ int main(void) {
                 }
             }
                 else {
-                if (cible == 0) {
-                    revelerCase(clic_temp.x, clic_temp.y, taille_grille, mines, grille_utilisateur);
-                } else {
-                    grille_utilisateur[clic_temp.y][clic_temp.x] = '0' + cible;
+                    if (cible == 0) {
+                        revelerCase(clic_temp.x, clic_temp.y, taille_grille, mines, grille_utilisateur);
+                    } else {
+                        grille_utilisateur[clic_temp.y][clic_temp.x] = '0' + cible;
                 }
             }
 
@@ -167,7 +167,7 @@ int main(void) {
                 if (cases_restantes == 0) {
                     tours_brouillage = 0;
                     afficherGrille(taille_grille, grille_utilisateur, mines, tours_brouillage);
-                    printf("\nFelicitations ! Vous avez revele toutes les cases sûres. VICTOIRE ! ✨\n");
+                    printf("\nFelicitations ! Vous avez revele toutes les cases sûres. VICTOIRE !\n");
                     statut_partie = 1;
                 }
 

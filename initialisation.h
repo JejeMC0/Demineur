@@ -13,7 +13,7 @@
  */
 
 typedef struct {
-    int dimmension;
+    int dimension;
     int difficulte;
     int mode;
 }regle;

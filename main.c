@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <tgmath.h>
 #include <time.h>
 #include "demineur.h"
 #include "initialisation.h"
@@ -19,7 +20,7 @@ int main(void) {
 
     if (lancement == 1) {
         Configuration_temps = configurationPartie();
-        taille_grille = Configuration_temps.dimmension;
+        taille_grille = Configuration_temps.dimension;
         nb_mine = mineDifficulte(Configuration_temps);
         mode_jeu = Configuration_temps.mode;
         printf("Nombre de mines : %d \n", nb_mine);
@@ -71,7 +72,7 @@ int main(void) {
         valeurCaseAutourMine(taille_grille, mines);
 
         if (mode_jeu == 2) {
-            int nb_bonus_malus = taille_grille / 2;
+            int nb_bonus_malus = roundf(0.5 * taille_grille);
             if (nb_bonus_malus < 1) nb_bonus_malus = 1;
             generePositionBrouillage(nb_bonus_malus, taille_grille, mines, objets);
             generePosition1UP(nb_bonus_malus, taille_grille, mines, objets);
@@ -139,7 +140,7 @@ int main(void) {
                     afficherGrille(taille_grille, grille_utilisateur, mines, tours_brouillage);
                 }
             }
-            else {
+                else {
                 if (cible == 0) {
                     revelerCase(clic_temp.x, clic_temp.y, taille_grille, mines, grille_utilisateur);
                 } else {

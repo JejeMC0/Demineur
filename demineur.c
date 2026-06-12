@@ -210,10 +210,10 @@ int gererExplosionMine(int *vies, char *case_utilisateur) {
     if (*vies > 0) {
         *case_utilisateur = 'B';
         printf("\nBOOM ! Vous avez touche une mine ! Heureusement une vie vous sauve (Reste : %d vies)\n", *vies);
-        return 0; 
+        return 0;
     } else {
         *case_utilisateur = '*';
         printf("\nGAME OVER ! Vous n'avez plus de vies.\n");
-        return -1; 
+        return -1;
     }
 }

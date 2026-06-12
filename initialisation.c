@@ -35,9 +35,10 @@ int selectionnerOptionMenu() {
     // Boucle tant que le choix n'est pas 1, 2 ou 3.  Cette boucle assure
     // que l'utilisateur entre une option valide du menu.
     do {
-        // Vérifie si le choix est valide (1, 2 ou 3).
+        printf("Votre choix : ");
+        scanf("%d", &choix);
         if (choix != 1 && choix != 2 && choix != 3) {
-            printf("Choix invalide. Veuillez choisir parmi 1, 2 ou 3.\n"); // Message d'erreur pour un choix incorrect.
+            printf("Choix invalide. Veuillez choisir parmi 1, 2 ou 3.\n");
         }
     } while (choix != 1 && choix != 2 && choix != 3);
 
@@ -75,14 +76,14 @@ regle configurationPartie() {
 
     // Deuxième boucle : permet à l'utilisateur de choisir la dimension du champ de mine.
     do {
-        printf("================ Dimmension du champ de mine ===============\n");
-        printf("Le champ de mine peut avoir des dimmensions de 6x6 a 12x12\n");
+        printf("================ Dimension du champ de mine ===============\n");
+        printf("Le champ de mine peut avoir des dimensions de 6x6 a 12x12\n");
         printf("===========================================\n");
         printf("Votre choix : ");
 
-        // Lit le choix de l'utilisateur et le stocke dans la variable 'Configuration.dimmension'.
-        scanf("%d", &Configuration.dimmension);
-    } while (Configuration.dimmension < 6 || Configuration.dimmension > 12); // Continue de demander à l'utilisateur jusqu'à ce que la dimension soit comprise entre 6 et 12.
+        // Lit le choix de l'utilisateur et le stocke dans la variable 'Configuration.dimmnsion'.
+        scanf("%d", &Configuration.dimension);
+    } while (Configuration.dimension < 6 || Configuration.dimension > 12); // Continue de demander à l'utilisateur jusqu'à ce que la dimension soit comprise entre 6 et 12.
 
     // Troisième boucle : permet à l'utilisateur de choisir la difficulté.
     do {
@@ -100,7 +101,7 @@ regle configurationPartie() {
     // Affiche des messages de débogage pour vérifier les valeurs des variables.
     printf("DEBUG: Dans la fonction, difficulte vaut : %d\n", Configuration.difficulte);
     printf("DEBUG: Dans la fonction, mode vaut : %d\n", Configuration.mode);
-    printf("DEBUG: Dans la fonction, dimmension vaut : %d\n", Configuration.dimmension);
+    printf("DEBUG: Dans la fonction, dimension vaut : %d\n", Configuration.dimension);
 
     // Retourne l'objet 'Configuration' contenant les paramètres de configuration de la partie.
     return Configuration;
@@ -126,15 +127,15 @@ int mineDifficulte(regle Configuration) {
     switch (Configuration.difficulte) {
         case 1: // Facile
             // Calcule le nombre de mines en fonction de la dimension du champ de mine et du niveau de difficulté (0,2 * dimension * dimension).
-            nb_mine = 0.2 * Configuration.dimmension * Configuration.dimmension;
+            nb_mine = 0.2 * Configuration.dimension * Configuration.dimension;
             break;
         case 2: // Moyen
             // Calcule le nombre de mines en fonction de la dimension du champ de mine et du niveau de difficulté (0,25 * dimension * dimension).
-            nb_mine = 0.25 * Configuration.dimmension * Configuration.dimmension;
+            nb_mine = 0.25 * Configuration.dimension * Configuration.dimension;
             break;
         case 3: // Difficile
             // Calcule le nombre de mines en fonction de la dimension du champ de mine et du niveau de difficulté (0,3 * dimension * dimension).
-            nb_mine = 0.3 * Configuration.dimmension * Configuration.dimmension;
+            nb_mine = 0.3 * Configuration.dimension * Configuration.dimension;
             break;
     }
 
@@ -299,8 +300,6 @@ void generePosition1UP(int nb_caseUP, int taille_grille, int mines[taille_grille
  * @param tabAverif Le tableau 2D à parcourir.
  * @return 1 si la valeur cible est trouvée dans le tableau, 0 sinon.
  */
-
-// Est ce qu'on s'en sert??
 
 int verificationTableau (int valeur_cible, int taille_grille, int tabAverif[taille_grille][taille_grille]) {
     int x = 0;

@@ -96,11 +96,6 @@ regle configurationPartie() {
         scanf("%d", &Configuration.difficulte); // Lit un entier depuis l'entrée standard et l'assigne à la variable 'Configuration.difficulte'.
     } while (Configuration.difficulte < 1 || Configuration.difficulte > 3); // Continue de demander à l'utilisateur jusqu'à ce que la difficulté soit comprise entre 1 et 3.
 
-    // Affiche des messages de débogage pour vérifier les valeurs des variables.
-    printf("DEBUG: Dans la fonction, difficulte vaut : %d\n", Configuration.difficulte); // Affiche la valeur de 'Configuration.difficulte'.
-    printf("DEBUG: Dans la fonction, mode vaut : %d\n", Configuration.mode); // Affiche la valeur de 'Configuration.mode'.
-    printf("DEBUG: Dans la fonction, dimension vaut : %d\n", Configuration.dimension); // Affiche la valeur de 'Configuration.dimension'.
-
     // Retourne l'objet 'Configuration' contenant les paramètres de configuration de la partie.
     return Configuration; // Renvoie l'objet 'Configuration' au code appelant.
 }

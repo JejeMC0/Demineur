@@ -132,9 +132,6 @@ int mineDifficulte(regle Configuration) {
             break;
     }
 
-    // Affiche le nombre de mines calculé à des fins de débogage.
-    printf("%f \n", nb_mine); // Affiche la valeur de 'nb_mine' pour aider au débogage.
-
     // Convertit la valeur float du nombre de mines en un entier et retourne cette valeur.
     return (int)roundf(nb_mine); // Convertit la valeur float en un entier, arrondie au plus près, et la retourne.
 }

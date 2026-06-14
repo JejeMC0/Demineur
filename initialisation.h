@@ -21,12 +21,13 @@ typedef struct {
 
 
 /**
- * @brief Obtient le choix de l'utilisateur dans un menu.
+ * @brief Permet à l'utilisateur de choisir une option dans un menu principal.
  *
- * Cette fonction affiche un menu d'options et attend que l'utilisateur entre un choix valide.
- * Elle utilise une boucle `do...while` pour s'assurer que l'utilisateur entre bien une valeur valide.
+ * Cette fonction affiche un menu avec les options démarrer une partie, reprendre une partie
+ * ou quitter le jeu. Elle valide ensuite l'entrée de l'utilisateur pour s'assurer qu'il choisit
+ * une option valide (1, 2 ou 3).
  *
- * @return Le choix de l'utilisateur (1, 2 ou 3).
+ * @return L'entier représentant le choix de l'utilisateur (1, 2 ou 3).
  */
 
 int selectionnerOptionMenu();
@@ -37,13 +38,15 @@ int selectionnerOptionMenu();
 
 
 /**
- * @brief Configure les paramètres d'une partie de jeu.
+ * @brief Permet à l'utilisateur de configurer les paramètres d'une partie (mode, dimension, difficulté).
  *
- * Cette fonction permet à l'utilisateur de choisir le mode de jeu, la dimension du champ de mine et la difficulté.
- * Elle utilise des boucles `do...while` pour s'assurer que l'utilisateur entre des valeurs valides pour chaque paramètre.
+ * Cette fonction guide l'utilisateur dans le choix des options pour configurer une nouvelle partie.
+ * Elle utilise des boucles `do-while` pour valider les entrées de l'utilisateur et s'assurer qu'elles
+ * sont dans les plages autorisées.  Elle retourne un objet 'regle' contenant ces paramètres configurés.
  *
- * @return Une structure `regle` contenant les paramètres configurés par l'utilisateur.
+ * @return Un objet 'regle' contenant les paramètres de configuration de la partie (mode, dimension, difficulté).
  */
+
 
 regle configurationPartie();
 
@@ -51,13 +54,14 @@ regle configurationPartie();
 
 
 /**
- * @brief Calcule le nombre de mines pour une partie donnée en fonction de la difficulté.
+ * @brief Détermine le nombre de mines à placer sur la grille en fonction de la difficulté sélectionnée.
  *
- * Cette fonction calcule le nombre de mines à placer sur la grille, en fonction du mode de jeu et de la difficulté choisis par l'utilisateur.
- * Elle utilise des formules différentes pour chaque niveau de difficulté.
+ * Cette fonction prend l'objet 'regle' contenant les paramètres de configuration de la partie et calcule
+ * le nombre de mines nécessaires pour un niveau de difficulté donné. Elle utilise une structure `switch`
+ * pour déterminer le nombre de mines approprié en fonction du choix de l'utilisateur (facile, moyen ou difficile).
  *
- * @param Configuration La structure `regle` contenant les paramètres de configuration de la partie.
- * @return Le nombre de mines à placer sur la grille (entier).
+ * @param Configuration Un objet 'regle' contenant les paramètres de configuration de la partie (mode, dimension, difficulté).
+ * @return Le nombre de mines calculé (un entier arrondi au plus proche).
  */
 
 int mineDifficulte(regle Configuration);
@@ -68,11 +72,12 @@ int mineDifficulte(regle Configuration);
 /**
  * @brief Génère les positions des mines sur la grille.
  *
- * Cette fonction génère un tableau de positions pour les mines, en s'assurant qu'il n'y ait pas deux mines à la même position.
- * Elle utilise une boucle `do...while` pour s'assurer que chaque position est unique.
+ * Cette fonction place aléatoirement le nombre de mines spécifié sur une grille donnée. Elle utilise un algorithme
+ * pour éviter que plusieurs mines ne soient placées aux mêmes coordonnées et stocke les positions des mines dans un tableau.
  *
  * @param nb_mine Le nombre de mines à placer sur la grille.
- * @param valeur_mines Un tableau (par référence) dans lequel les positions des mines seront stockées.
+ * @param valeur_mines Un tableau 2D (en réalité, un tableau 1D) qui contiendra les coordonnées (indices) des mines.
+ *                      `valeur_mines[i]` sera l'indice (ligne et colonne) d'une mine sur la grille.
  * @param taille_grille La dimension de la grille (nombre de lignes et de colonnes).
  */
 
@@ -83,14 +88,14 @@ void generePositionMines(int nb_mine, int valeur_mines[nb_mine], int taille_gril
 
 
 /**
- * @brief Calcule le nombre de mines adjacentes à chaque case et incrémente les valeurs si nécessaire.
+ * @brief Calcule et met à jour les valeurs des cases autour des mines sur la grille.
  *
- * Cette fonction parcourt la grille et pour chaque case qui contient une mine (valeur = 9), elle compte le nombre de mines
- * adjacentes à cette case.  Si une case adjacente a déjà un nombre de mines, elle l'incrémente. Si elle est la première fois qu'elle détecte
- * une mine adjacente, elle initialise le compteur à 1.
+ * Cette fonction parcourt chaque case de la grille et, si une case est identifiée comme étant une mine (valeur 9),
+ * elle incrémente le nombre de mines adjacentes à toutes les cases voisines (dans les huit directions).
  *
  * @param taille_grille La dimension de la grille (nombre de lignes et de colonnes).
- * @param mines Un tableau 2D représentant la grille "solution".  Chaque case contient le nombre de mines à l'intersection de la ligne et de la colonne correspondante.
+ * @param mines Un tableau 2D représentant la configuration des mines.
+ *               `mines[i][j]` indique le nombre de mines à l'intersection de la ligne `i` et de la colonne `j`.
  */
 
 void valeurCaseAutourMine(int taille_grille, int mines[taille_grille][taille_grille]);
@@ -100,16 +105,18 @@ void valeurCaseAutourMine(int taille_grille, int mines[taille_grille][taille_gri
 
 
 /**
- * @brief Génère les positions des cases brouillées sur la grille.
+ * @brief Génère les positions du brouillard (case brouillée) sur la grille.
  *
- * Cette fonction génère un tableau de positions pour les cases brouillées, en s'assurant qu'il n'y ait pas deux cases brouillées à la même position.
- * Elle utilise une boucle `do...while` pour s'assurer que chaque position est unique.
+ * Cette fonction place aléatoirement le nombre de cases brouillées spécifié sur la grille, en s'assurant qu'elles ne se trouvent pas
+ * sur des mines ou sur d'autres objets (bonus/malus). Elle utilise une boucle `do-while` pour garantir que chaque position
+ * choisie est valide.
  *
  * @param nb_caseBrouillard Le nombre de cases à brouiller sur la grille.
- * @param valeur_brouillard Un tableau (par référence) dans lequel les positions des cases brouillées seront stockées.
- * @param valeur_cible La valeur cible à vérifier lors de la génération des positions.
  * @param taille_grille La dimension de la grille (nombre de lignes et de colonnes).
- * @param mines Un tableau 2D représentant la grille "solution".  Chaque case contient le nombre de mines à l'intersection de la ligne et de la colonne correspondante.
+ * @param mines Un tableau 2D représentant la configuration des mines.
+ *               `mines[i][j]` indique le nombre de mines à l'intersection de la ligne `i` et de la colonne `j`.
+ * @param objets Un tableau 2D représentant les bonus et malus appliqués au joueur.
+ *               `objets[i][j]` indique le bonus ou malus appliqué à l'intersection de la ligne `i` et de la colonne `j`.
  */
 
 void generePositionBrouillage(int nb_caseBrouillard, int taille_grille, int mines[taille_grille][taille_grille], int objets[taille_grille][taille_grille]);
@@ -118,35 +125,20 @@ void generePositionBrouillage(int nb_caseBrouillard, int taille_grille, int mine
 
 
 /**
- * @brief Génère les positions des cases "UP" (cases révélées sans mine) sur la grille.
+ * @brief Génère les positions des cases 1UP (bonus) sur la grille.
  *
- * Cette fonction génère un tableau de positions pour les cases "UP", en s'assurant qu'il n'y ait pas deux cases "UP" à la même position.
- * Elle utilise une boucle `do...while` pour s'assurer que chaque position est unique.
+ * Cette fonction place aléatoirement le nombre de cases 1UP spécifié sur la grille, en s'assurant qu'elles ne se trouvent pas
+ * sur des mines ou sur d'autres objets (bonus/malus). Elle utilise une boucle `do-while` pour garantir que chaque position
+ * choisie est valide.
  *
- * @param nb_caseUP Le nombre de cases "UP" à placer sur la grille.
- * @param valeur_UP Un tableau (par référence) dans lequel les positions des cases "UP" seront stockées.
- * @param valeur_cible La valeur cible à vérifier lors de la génération des positions.
+ * @param nb_caseUP Le nombre de cases 1UP à placer sur la grille.
  * @param taille_grille La dimension de la grille (nombre de lignes et de colonnes).
- * @param mines Un tableau 2D représentant la grille "solution".  Chaque case contient le nombre de mines à l'intersection de la ligne et de la colonne correspondante.
+ * @param mines Un tableau 2D représentant la configuration des mines.
+ *               `mines[i][j]` indique le nombre de mines à l'intersection de la ligne `i` et de la colonne `j`.
+ * @param objets Un tableau 2D représentant les bonus et malus appliqués au joueur.
+ *               `objets[i][j]` indique le bonus ou malus appliqué à l'intersection de la ligne `i` et de la colonne `j`.
  */
 
 void generePosition1UP(int nb_caseUP, int taille_grille, int mines[taille_grille][taille_grille], int objets[taille_grille][taille_grille]);
-
-
-
-/**
- * @brief Vérifie si une valeur cible est présente dans un tableau 2D.
- *
- * Cette fonction parcourt un tableau 2D et vérifie si une valeur spécifique est présente à l'une de ses positions.
- * Si la valeur est trouvée, elle retourne 1 ; sinon, elle retourne 0.
- *
- * @param valeur_cible La valeur à rechercher dans le tableau.
- * @param taille_grille La dimension du tableau (nombre de lignes et de colonnes).
- * @param tabAverif Le tableau 2D à parcourir.
- * @return 1 si la valeur cible est trouvée dans le tableau, 0 sinon.
- */
-
-int verificationTableau (int valeur_cible ,int taille_grille, int tabAverif[taille_grille][taille_grille]);
-
 
 #endif //PROJET_IF2_INITIALISATION_H

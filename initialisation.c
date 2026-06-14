@@ -9,119 +9,117 @@
 #include <stdlib.h>
 
 /**
- * @brief Obtient le choix de l'utilisateur dans un menu.
+ * @brief Permet à l'utilisateur de choisir une option dans un menu principal.
  *
- * Cette fonction affiche un menu d'options et attend que l'utilisateur entre un choix valide.
- * Elle utilise une boucle `do...while` pour s'assurer que l'utilisateur entre bien une valeur valide.
+ * Cette fonction affiche un menu avec les options démarrer une partie, reprendre une partie
+ * ou quitter le jeu. Elle valide ensuite l'entrée de l'utilisateur pour s'assurer qu'il choisit
+ * une option valide (1, 2 ou 3).
  *
- * @return Le choix de l'utilisateur (1, 2 ou 3).
+ * @return L'entier représentant le choix de l'utilisateur (1, 2 ou 3).
  */
 
 int selectionnerOptionMenu() {
-    // Affiche le menu principal aux joueurs.
-    printf("================ Menu ===============\n");
-    printf("1) Demarrer une partie\n");
-    printf("2) Reprendre une partie\n");
-    printf("3) Quitter\n");
-    printf("===========================================\n");
+    printf("================ Menu ===============\n"); // Affiche le titre du menu.
+    printf("1) Demarrer une partie\n"); // Décrit l'option 1.
+    printf("2) Reprendre une partie\n"); // Décrit l'option 2.
+    printf("3) Quitter\n"); // Décrit l'option 3.
+    printf("===========================================\n"); // Affiche la fin du menu.
 
     // Demande à l'utilisateur de faire un choix.
     printf("Votre choix : ");
 
     // Lit le choix de l'utilisateur et le stocke dans la variable 'choix'.
     int choix;
-    scanf("%d", &choix);
+    scanf("%d", &choix); // Lit un entier depuis l'entrée standard et l'assigne à la variable 'choix'.
 
     // Boucle tant que le choix n'est pas 1, 2 ou 3.  Cette boucle assure
     // que l'utilisateur entre une option valide du menu.
-    while (choix != 1 && choix != 2 && choix != 3)
+    while (choix != 1 && choix != 2 && choix != 3) // Tant que 'choix' n'est pas égal à 1, 2 ou 3...
     {
-        printf("Choix invalide. Veuillez choisir parmi 1, 2 ou 3.\n");
-        printf("Votre choix : ");
-        scanf("%d", &choix);
+        printf("Choix invalide. Veuillez choisir parmi 1, 2 ou 3.\n"); // Affiche un message d'erreur si le choix est invalide.
+        printf("Votre choix : "); // Demande à l'utilisateur de refaire son choix.
+        scanf("%d", &choix); // Lit le nouveau choix de l'utilisateur et l'assigne à la variable 'choix'.
     }
-    
 
     // Retourne le choix de l'utilisateur.  Ceci est la valeur qui sera utilisée
     // par le code appelant pour déterminer quelle action effectuer.
-    return choix;
+    return choix; // Renvoie la valeur de 'choix' au code appelant.
 }
 
 
 /**
- * @brief Configure les paramètres d'une partie de jeu.
+ * @brief Permet à l'utilisateur de configurer les paramètres d'une partie (mode, dimension, difficulté).
  *
- * Cette fonction permet à l'utilisateur de choisir le mode de jeu, la dimension du champ de mine et la difficulté.
- * Elle utilise des boucles `do...while` pour s'assurer que l'utilisateur entre des valeurs valides pour chaque paramètre.
+ * Cette fonction guide l'utilisateur dans le choix des options pour configurer une nouvelle partie.
+ * Elle utilise des boucles `do-while` pour valider les entrées de l'utilisateur et s'assurer qu'elles
+ * sont dans les plages autorisées.  Elle retourne un objet 'regle' contenant ces paramètres configurés.
  *
- * @return Une structure `regle` contenant les paramètres configurés par l'utilisateur.
+ * @return Un objet 'regle' contenant les paramètres de configuration de la partie (mode, dimension, difficulté).
  */
 
-
 regle configurationPartie() {
-    // Déclare une variable de type 'regle' pour stocker les paramètres de configuration de la partie.
-    regle Configuration;
+    regle Configuration; // Déclare une variable de type 'regle' pour stocker les paramètres de configuration de la partie.
 
     // Première boucle : permet à l'utilisateur de choisir le mode de jeu.
     do {
-        printf("================ Mode de jeu ===============\n");
-        printf("1) Mode de jeu Classique\n");
-        printf("2) Mode de Jeu Bonus/Malus\n");
-        printf("===========================================\n");
-        printf("Votre choix : ");
+        printf("================ Mode de jeu ===============\n"); // Affiche le titre du menu des modes de jeu.
+        printf("1) Mode de jeu Classique\n"); // Décrit l'option 1 (Mode de jeu Classique).
+        printf("2) Mode de Jeu Bonus/Malus\n"); // Décrit l'option 2 (Mode de Jeu Bonus/Malus).
+        printf("===========================================\n"); // Affiche la fin du menu des modes de jeu.
+        printf("Votre choix : "); // Demande à l'utilisateur de faire un choix.
 
         // Lit le choix de l'utilisateur et le stocke dans la variable 'Configuration.mode'.
-        scanf("%d", &Configuration.mode);
+        scanf("%d", &Configuration.mode); // Lit un entier depuis l'entrée standard et l'assigne à la variable 'Configuration.mode'.
     } while (Configuration.mode != 1 && Configuration.mode != 2); // Continue de demander à l'utilisateur jusqu'à ce qu'il entre 1 ou 2.
 
     // Deuxième boucle : permet à l'utilisateur de choisir la dimension du champ de mine.
     do {
-        printf("================ Dimension du champ de mine ===============\n");
-        printf("Le champ de mine peut avoir des dimensions de 6x6 a 12x12\n");
-        printf("===========================================\n");
-        printf("Votre choix : ");
+        printf("================ Dimension du champ de mine ===============\n"); // Affiche le titre du menu des dimensions du champ de mine.
+        printf("Le champ de mine peut avoir des dimensions de 6x6 a 12x12\n"); // Décrit les dimensions possibles du champ de mine.
+        printf("===========================================\n"); // Affiche la fin du menu des dimensions du champ de mine.
+        printf("Votre choix : "); // Demande à l'utilisateur de faire un choix.
 
-        // Lit le choix de l'utilisateur et le stocke dans la variable 'Configuration.dimmnsion'.
-        scanf("%d", &Configuration.dimension);
+        // Lit le choix de l'utilisateur et le stocke dans la variable 'Configuration.dimension'.
+        scanf("%d", &Configuration.dimension); // Lit un entier depuis l'entrée standard et l'assigne à la variable 'Configuration.dimension'.
     } while (Configuration.dimension < 6 || Configuration.dimension > 12); // Continue de demander à l'utilisateur jusqu'à ce que la dimension soit comprise entre 6 et 12.
 
     // Troisième boucle : permet à l'utilisateur de choisir la difficulté.
     do {
-        printf("\n=============== Difficulte ===============\n");
-        printf("1) Facile\n");
-        printf("2) Moyen\n");
-        printf("3) Difficile\n");
-        printf("===========================================\n");
-        printf("Votre choix : ");
+        printf("\n=============== Difficulte ===============\n"); // Affiche le titre du menu des difficultés.
+        printf("1) Facile\n"); // Décrit l'option 1 (Facile).
+        printf("2) Moyen\n"); // Décrit l'option 2 (Moyen).
+        printf("3) Difficile\n"); // Décrit l'option 3 (Difficile).
+        printf("===========================================\n"); // Affiche la fin du menu des difficultés.
+        printf("Votre choix : "); // Demande à l'utilisateur de faire un choix.
 
         // Lit le choix de l'utilisateur et le stocke dans la variable 'Configuration.difficulte'.
-        scanf("%d", &Configuration.difficulte);
+        scanf("%d", &Configuration.difficulte); // Lit un entier depuis l'entrée standard et l'assigne à la variable 'Configuration.difficulte'.
     } while (Configuration.difficulte < 1 || Configuration.difficulte > 3); // Continue de demander à l'utilisateur jusqu'à ce que la difficulté soit comprise entre 1 et 3.
 
     // Affiche des messages de débogage pour vérifier les valeurs des variables.
-    printf("DEBUG: Dans la fonction, difficulte vaut : %d\n", Configuration.difficulte);
-    printf("DEBUG: Dans la fonction, mode vaut : %d\n", Configuration.mode);
-    printf("DEBUG: Dans la fonction, dimension vaut : %d\n", Configuration.dimension);
+    printf("DEBUG: Dans la fonction, difficulte vaut : %d\n", Configuration.difficulte); // Affiche la valeur de 'Configuration.difficulte'.
+    printf("DEBUG: Dans la fonction, mode vaut : %d\n", Configuration.mode); // Affiche la valeur de 'Configuration.mode'.
+    printf("DEBUG: Dans la fonction, dimension vaut : %d\n", Configuration.dimension); // Affiche la valeur de 'Configuration.dimension'.
 
     // Retourne l'objet 'Configuration' contenant les paramètres de configuration de la partie.
-    return Configuration;
+    return Configuration; // Renvoie l'objet 'Configuration' au code appelant.
 }
 
 
 
 /**
- * @brief Calcule le nombre de mines pour une partie donnée en fonction de la difficulté.
+ * @brief Détermine le nombre de mines à placer sur la grille en fonction de la difficulté sélectionnée.
  *
- * Cette fonction calcule le nombre de mines à placer sur la grille, en fonction du mode de jeu et de la difficulté choisis par l'utilisateur.
- * Elle utilise des formules différentes pour chaque niveau de difficulté.
+ * Cette fonction prend l'objet 'regle' contenant les paramètres de configuration de la partie et calcule
+ * le nombre de mines nécessaires pour un niveau de difficulté donné. Elle utilise une structure `switch`
+ * pour déterminer le nombre de mines approprié en fonction du choix de l'utilisateur (facile, moyen ou difficile).
  *
- * @param Configuration La structure `regle` contenant les paramètres de configuration de la partie.
- * @return Le nombre de mines à placer sur la grille (entier).
+ * @param Configuration Un objet 'regle' contenant les paramètres de configuration de la partie (mode, dimension, difficulté).
+ * @return Le nombre de mines calculé (un entier arrondi au plus proche).
  */
 
 int mineDifficulte(regle Configuration) {
-    // Déclare une variable de type float pour stocker le nombre de mines.
-    float nb_mine = 0.0;
+    float nb_mine = 0.0; // Déclare une variable de type float pour stocker le nombre de mines.
 
     // Utilise un switch statement pour déterminer le nombre de mines en fonction du niveau de difficulté.
     switch (Configuration.difficulte) {
@@ -140,10 +138,10 @@ int mineDifficulte(regle Configuration) {
     }
 
     // Affiche le nombre de mines calculé à des fins de débogage.
-    printf("%f \n", nb_mine);
+    printf("%f \n", nb_mine); // Affiche la valeur de 'nb_mine' pour aider au débogage.
 
     // Convertit la valeur float du nombre de mines en un entier et retourne cette valeur.
-    return (int)roundf(nb_mine);
+    return (int)roundf(nb_mine); // Convertit la valeur float en un entier, arrondie au plus près, et la retourne.
 }
 
 
@@ -151,18 +149,19 @@ int mineDifficulte(regle Configuration) {
 /**
  * @brief Génère les positions des mines sur la grille.
  *
- * Cette fonction génère un tableau de positions pour les mines, en s'assurant qu'il n'y ait pas deux mines à la même position.
- * Elle utilise une boucle `do...while` pour s'assurer que chaque position est unique.
+ * Cette fonction place aléatoirement le nombre de mines spécifié sur une grille donnée. Elle utilise un algorithme
+ * pour éviter que plusieurs mines ne soient placées aux mêmes coordonnées et stocke les positions des mines dans un tableau.
  *
  * @param nb_mine Le nombre de mines à placer sur la grille.
- * @param valeur_mines Un tableau (par référence) dans lequel les positions des mines seront stockées.
+ * @param valeur_mines Un tableau 2D (en réalité, un tableau 1D) qui contiendra les coordonnées (indices) des mines.
+ *                      `valeur_mines[i]` sera l'indice (ligne et colonne) d'une mine sur la grille.
  * @param taille_grille La dimension de la grille (nombre de lignes et de colonnes).
  */
 
 void generePositionMines(int nb_mine, int valeur_mines[nb_mine], int taille_grille) {
     // Affiche le nombre de mines et la taille de la grille pour information.
-    printf("%d  mines\n", nb_mine);
-    printf("%d  taille\n", taille_grille);
+    printf("%d  mines\n", nb_mine); // Affiche le nombre de mines à placer.
+    printf("%d  taille\n", taille_grille); // Affiche la taille de la grille.
 
     // Boucle pour placer chaque mine à une position aléatoire sur la grille.
     for (int i = 0; i < nb_mine; ++i) {
@@ -188,14 +187,14 @@ void generePositionMines(int nb_mine, int valeur_mines[nb_mine], int taille_gril
 
 
 /**
- * @brief Calcule le nombre de mines adjacentes à chaque case et incrémente les valeurs si nécessaire.
+ * @brief Calcule et met à jour les valeurs des cases autour des mines sur la grille.
  *
- * Cette fonction parcourt la grille et pour chaque case qui contient une mine (valeur = 9), elle compte le nombre de mines
- * adjacentes à cette case.  Si une case adjacente a déjà un nombre de mines, elle l'incrémente. Si elle est la première fois qu'elle détecte
- * une mine adjacente, elle initialise le compteur à 1.
+ * Cette fonction parcourt chaque case de la grille et, si une case est identifiée comme étant une mine (valeur 9),
+ * elle incrémente le nombre de mines adjacentes à toutes les cases voisines (dans les huit directions).
  *
  * @param taille_grille La dimension de la grille (nombre de lignes et de colonnes).
- * @param mines Un tableau 2D représentant la grille "solution".  Chaque case contient le nombre de mines à l'intersection de la ligne et de la colonne correspondante.
+ * @param mines Un tableau 2D représentant la configuration des mines.
+ *               `mines[i][j]` indique le nombre de mines à l'intersection de la ligne `i` et de la colonne `j`.
  */
 
 void valeurCaseAutourMine(int taille_grille, int mines[taille_grille][taille_grille]) {
@@ -230,87 +229,65 @@ void valeurCaseAutourMine(int taille_grille, int mines[taille_grille][taille_gri
 
 
 
-
 /**
- * @brief Génère les positions des cases brouillées sur la grille.
+ * @brief Génère les positions du brouillard (case brouillée) sur la grille.
  *
- * Cette fonction génère un tableau de positions pour les cases brouillées, en s'assurant qu'il n'y ait pas deux cases brouillées à la même position.
- * Elle utilise une boucle `do...while` pour s'assurer que chaque position est unique.
+ * Cette fonction place aléatoirement le nombre de cases brouillées spécifié sur la grille, en s'assurant qu'elles ne se trouvent pas
+ * sur des mines ou sur d'autres objets (bonus/malus). Elle utilise une boucle `do-while` pour garantir que chaque position
+ * choisie est valide.
  *
  * @param nb_caseBrouillard Le nombre de cases à brouiller sur la grille.
- * @param valeur_brouillard Un tableau (par référence) dans lequel les positions des cases brouillées seront stockées.
- * @param valeur_cible La valeur cible à vérifier lors de la génération des positions.
  * @param taille_grille La dimension de la grille (nombre de lignes et de colonnes).
- * @param mines Un tableau 2D représentant la grille "solution".  Chaque case contient le nombre de mines à l'intersection de la ligne et de la colonne correspondante.
+ * @param mines Un tableau 2D représentant la configuration des mines.
+ *               `mines[i][j]` indique le nombre de mines à l'intersection de la ligne `i` et de la colonne `j`.
+ * @param objets Un tableau 2D représentant les bonus et malus appliqués au joueur.
+ *               `objets[i][j]` indique le bonus ou malus appliqué à l'intersection de la ligne `i` et de la colonne `j`.
  */
 
 
 void generePositionBrouillage(int nb_caseBrouillard, int taille_grille, int mines[taille_grille][taille_grille], int objets[taille_grille][taille_grille]) {
     for (int i = 0; i < nb_caseBrouillard; ++i) {
-        int rx, ry;
+        int rx, ry; // x, y de la case brouillée.
         do {
+            // Génère une position aléatoire sur la grille.
             int pos = rand() % (taille_grille * taille_grille);
-            rx = pos % taille_grille;
-            ry = pos / taille_grille;
-        } while (mines[ry][rx] == 9 || objets[ry][rx] != 0); // Pas sur une mine, pas sur un autre objet
-        objets[ry][rx] = 10; // 10 = Brouillage
+            rx = pos % taille_grille; // Coordonnée x.
+            ry = pos / taille_grille; // Coordonnée y.
+        } while (mines[ry][rx] == 9 || objets[ry][rx] != 0); // Vérifie que la position n'est pas sur une mine ou un autre objet.
+
+        // Définit la case brouillée.
+        objets[ry][rx] = 10; // 10 est une valeur arbitraire pour représenter le brouillage.
     }
 }
 
 
 
 /**
- * @brief Génère les positions des cases "UP" (cases révélées sans mine) sur la grille.
+ * @brief Génère les positions des cases 1UP (bonus) sur la grille.
  *
- * Cette fonction génère un tableau de positions pour les cases "UP", en s'assurant qu'il n'y ait pas deux cases "UP" à la même position.
- * Elle utilise une boucle `do...while` pour s'assurer que chaque position est unique.
+ * Cette fonction place aléatoirement le nombre de cases 1UP spécifié sur la grille, en s'assurant qu'elles ne se trouvent pas
+ * sur des mines ou sur d'autres objets (bonus/malus). Elle utilise une boucle `do-while` pour garantir que chaque position
+ * choisie est valide.
  *
- * @param nb_caseUP Le nombre de cases "UP" à placer sur la grille.
- * @param valeur_UP Un tableau (par référence) dans lequel les positions des cases "UP" seront stockées.
- * @param valeur_cible La valeur cible à vérifier lors de la génération des positions.
+ * @param nb_caseUP Le nombre de cases 1UP à placer sur la grille.
  * @param taille_grille La dimension de la grille (nombre de lignes et de colonnes).
- * @param mines Un tableau 2D représentant la grille "solution".  Chaque case contient le nombre de mines à l'intersection de la ligne et de la colonne correspondante.
+ * @param mines Un tableau 2D représentant la configuration des mines.
+ *               `mines[i][j]` indique le nombre de mines à l'intersection de la ligne `i` et de la colonne `j`.
+ * @param objets Un tableau 2D représentant les bonus et malus appliqués au joueur.
+ *               `objets[i][j]` indique le bonus ou malus appliqué à l'intersection de la ligne `i` et de la colonne `j`.
  */
-/////////////////////////////////////
 
 void generePosition1UP(int nb_caseUP, int taille_grille, int mines[taille_grille][taille_grille], int objets[taille_grille][taille_grille]) {
     for (int i = 0; i < nb_caseUP; ++i) {
-        int rx, ry;
+        int rx, ry; // x, y de la case 1UP.
         do {
+            // Génère une position aléatoire sur la grille.
             int pos = rand() % (taille_grille * taille_grille);
-            rx = pos % taille_grille;
-            ry = pos / taille_grille;
-        } while (mines[ry][rx] == 9 || objets[ry][rx] != 0); // Pas sur une mine, pas sur un autre objet
-        objets[ry][rx] = 11; // 11 = 1UP
+            rx = pos % taille_grille; // Coordonnée x.
+            ry = pos / taille_grille; // Coordonnée y.
+        } while (mines[ry][rx] == 9 || objets[ry][rx] != 0); // Vérifie que la position n'est pas sur une mine ou un autre objet.
+
+        // Définit la case 1UP.
+        objets[ry][rx] = 11; // 11 est une valeur arbitraire pour représenter le "1UP".
     }
 }
-///////////////////////////////
-
-
-
-
-/**
- * @brief Vérifie si une valeur cible est présente dans un tableau 2D.
- *
- * Cette fonction parcourt un tableau 2D et vérifie si une valeur spécifique est présente à l'une de ses positions.
- * Si la valeur est trouvée, elle retourne 1 ; sinon, elle retourne 0.
- *
- * @param valeur_cible La valeur à rechercher dans le tableau.
- * @param taille_grille La dimension du tableau (nombre de lignes et de colonnes).
- * @param tabAverif Le tableau 2D à parcourir.
- * @return 1 si la valeur cible est trouvée dans le tableau, 0 sinon.
- */
-
-// Inutilisé
-
-int verificationTableau (int valeur_cible, int taille_grille, int tabAverif[taille_grille][taille_grille]) {
-    int x = 0;
-    for (int i = 0; i < taille_grille; i++) {
-        for (int j = 0; j < taille_grille; j++) {
-            if (tabAverif[i][j] == valeur_cible) {
-                x = 1;
-            }
-        }
-    } return x;
-}
-

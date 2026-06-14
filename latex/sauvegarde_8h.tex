@@ -1,0 +1,84 @@
+\doxysection{sauvegarde.\+h File Reference}
+\hypertarget{sauvegarde_8h}{}\label{sauvegarde_8h}\index{sauvegarde.h@{sauvegarde.h}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{sauvegarde_8h_a6314e8d514e6021013a5f4b18239b472}{sauvegarde\+Partie}} (const char \texorpdfstring{$\ast$}{*}nom\+\_\+fichier, int taille\+\_\+grille, int nb\+\_\+mine, int mines\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, char grille\+\_\+utilisateur\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, int mode, int vies, int tours\+\_\+brouillage, int objets\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, int temps\+\_\+ecoule)
+\begin{DoxyCompactList}\small\item\em Sauvegarde l\textquotesingle{}état d\textquotesingle{}une partie dans un fichier. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{sauvegarde_8h_a616b7584ef520a64150e01c23a6277e7}{charger\+Partie}} (const char \texorpdfstring{$\ast$}{*}nom\+\_\+fichier, int \texorpdfstring{$\ast$}{*}taille\+\_\+grille, int \texorpdfstring{$\ast$}{*}nb\+\_\+mines, int mines\+[\texorpdfstring{$\ast$}{*}taille\+\_\+grille]\+\+[\texorpdfstring{$\ast$}{*}taille\+\_\+grille]\+, char grille\+\_\+utilisateur\+[\texorpdfstring{$\ast$}{*}taille\+\_\+grille]\+\+[\texorpdfstring{$\ast$}{*}taille\+\_\+grille]\+, int \texorpdfstring{$\ast$}{*}mode, int \texorpdfstring{$\ast$}{*}vies, int \texorpdfstring{$\ast$}{*}tours\+\_\+brouillage, int objets\+[\texorpdfstring{$\ast$}{*}taille\+\_\+grille]\+\+[\texorpdfstring{$\ast$}{*}taille\+\_\+grille]\+, int \texorpdfstring{$\ast$}{*}temps\+\_\+ecoule)
+\begin{DoxyCompactList}\small\item\em Charge l\textquotesingle{}état d\textquotesingle{}une partie à partir d\textquotesingle{}un fichier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{sauvegarde_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{sauvegarde_8h_a616b7584ef520a64150e01c23a6277e7}\index{sauvegarde.h@{sauvegarde.h}!chargerPartie@{chargerPartie}}
+\index{chargerPartie@{chargerPartie}!sauvegarde.h@{sauvegarde.h}}
+\doxysubsubsection{\texorpdfstring{chargerPartie()}{chargerPartie()}}
+{\footnotesize\ttfamily \label{sauvegarde_8h_a616b7584ef520a64150e01c23a6277e7} 
+void charger\+Partie (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{nom\+\_\+fichier}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{taille\+\_\+grille}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{nb\+\_\+mines}{, }\item[{int}]{mines}{\+[ \texorpdfstring{$\ast$}{*}taille\+\_\+grille]\+\+[ \texorpdfstring{$\ast$}{*}taille\+\_\+grille]\+, }\item[{char}]{grille\+\_\+utilisateur}{\+[ \texorpdfstring{$\ast$}{*}taille\+\_\+grille]\+\+[ \texorpdfstring{$\ast$}{*}taille\+\_\+grille]\+, }\item[{int \texorpdfstring{$\ast$}{*}}]{mode}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{vies}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{tours\+\_\+brouillage}{, }\item[{int}]{objets}{\+[ \texorpdfstring{$\ast$}{*}taille\+\_\+grille]\+\+[ \texorpdfstring{$\ast$}{*}taille\+\_\+grille]\+, }\item[{int \texorpdfstring{$\ast$}{*}}]{temps\+\_\+ecoule}{}\end{DoxyParamCaption})}
+
+
+
+Charge l\textquotesingle{}état d\textquotesingle{}une partie à partir d\textquotesingle{}un fichier. 
+
+Cette fonction lit les données d\textquotesingle{}une sauvegarde dans un fichier et les met à jour dans les variables correspondantes. Elle permet de reprendre une partie précédemment sauvegardée.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nom\+\_\+fichier} & Le nom du fichier contenant la sauvegarde à charger. \\
+\hline
+{\em taille\+\_\+grille} & Un pointeur vers l\textquotesingle{}entier qui contiendra la dimension de la grille. \\
+\hline
+{\em nb\+\_\+mines} & Un pointeur vers l\textquotesingle{}entier qui contiendra le nombre de mines présentes sur la grille. \\
+\hline
+{\em mines} & Un double pointeur 2D représentant le tableau des mines. {\ttfamily mines\+[i]\+\+[j]\+} sera modifié pour contenir le nombre de mines à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+{\em grille\+\_\+utilisateur} & Un double pointeur 2D représentant la grille visible par le joueur. {\ttfamily grille\+\_\+utilisateur\+[i]\+\+[j]\+} sera modifié pour contenir la valeur de la cellule à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+{\em mode} & Un pointeur vers l\textquotesingle{}entier qui contiendra le mode de jeu (par exemple, "{}classique"{}, "{}expert"{}). \\
+\hline
+{\em vies} & Un pointeur vers l\textquotesingle{}entier qui contiendra le nombre de vies restantes du joueur. \\
+\hline
+{\em tours\+\_\+brouillage} & Un pointeur vers l\textquotesingle{}entier qui contiendra le nombre de tours de brouillage effectués par le joueur. \\
+\hline
+{\em objets} & Un double pointeur 2D représentant les bonus et malus appliqués au joueur. {\ttfamily objets\+[i]\+\+[j]\+} sera modifié pour contenir la valeur du bonus/\+malus à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+{\em temps\+\_\+ecoule} & Un pointeur vers l\textquotesingle{}entier qui contiendra le temps écoulé pendant la partie. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sauvegarde_8h_a6314e8d514e6021013a5f4b18239b472}\index{sauvegarde.h@{sauvegarde.h}!sauvegardePartie@{sauvegardePartie}}
+\index{sauvegardePartie@{sauvegardePartie}!sauvegarde.h@{sauvegarde.h}}
+\doxysubsubsection{\texorpdfstring{sauvegardePartie()}{sauvegardePartie()}}
+{\footnotesize\ttfamily \label{sauvegarde_8h_a6314e8d514e6021013a5f4b18239b472} 
+void sauvegarde\+Partie (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{nom\+\_\+fichier}{, }\item[{int}]{taille\+\_\+grille}{, }\item[{int}]{nb\+\_\+mine}{, }\item[{int}]{mines}{\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, }\item[{char}]{grille\+\_\+utilisateur}{\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, }\item[{int}]{mode}{, }\item[{int}]{vies}{, }\item[{int}]{tours\+\_\+brouillage}{, }\item[{int}]{objets}{\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, }\item[{int}]{temps\+\_\+ecoule}{}\end{DoxyParamCaption})}
+
+
+
+Sauvegarde l\textquotesingle{}état d\textquotesingle{}une partie dans un fichier. 
+
+Cette fonction enregistre les informations nécessaires à la reconstitution d\textquotesingle{}une partie, incluant la taille de la grille, le nombre de mines, la configuration des mines et de la grille utilisateur, le mode de jeu, le nombre de vies restantes, le nombre de tours de brouillage effectués, la couche d\textquotesingle{}objets et le temps écoulé. Elle utilise un format texte simple pour stocker ces données dans un fichier.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nom\+\_\+fichier} & Le nom du fichier dans lequel sauvegarder la partie. \\
+\hline
+{\em taille\+\_\+grille} & La dimension de la grille (nombre de lignes et de colonnes). \\
+\hline
+{\em nb\+\_\+mine} & Le nombre de mines présentes sur la grille. \\
+\hline
+{\em mines} & Un tableau 2D représentant la configuration des mines. {\ttfamily mines\+[i]\+\+[j]\+} indique le nombre de mines à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+{\em grille\+\_\+utilisateur} & Un tableau 2D représentant la grille visible par le joueur. {\ttfamily grille\+\_\+utilisateur\+[i]\+\+[j]\+} représente un chiffre (0, 1, ou 2) indiquant le nombre de mines adjacentes à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+{\em mode} & L\textquotesingle{}indicateur du mode de jeu (par exemple, "{}classique"{}, "{}expert"{}). \\
+\hline
+{\em vies} & Le nombre de vies restantes du joueur. \\
+\hline
+{\em tours\+\_\+brouillage} & Le nombre de tours de brouillage effectués par le joueur. \\
+\hline
+{\em objets} & Un tableau 2D représentant les bonus et malus appliqués au joueur. {\ttfamily objets\+[i]\+\+[j]\+} indique le bonus ou malus appliqué à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+{\em temps\+\_\+ecoule} & Le temps écoulé pendant la partie. \\
+\hline
+\end{DoxyParams}

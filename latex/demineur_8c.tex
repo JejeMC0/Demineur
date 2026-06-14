@@ -1,0 +1,159 @@
+\doxysection{demineur.\+c File Reference}
+\hypertarget{demineur_8c}{}\label{demineur_8c}\index{demineur.c@{demineur.c}}
+{\ttfamily \+\#include "{}demineur.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structposition}{position}} \doxymbox{\hyperlink{demineur_8c_a46ad1663b7a4447c39b3c4c37b275b28}{position\+\_\+x\+\_\+y}} (int pos, int taille\+\_\+grille)
+\begin{DoxyCompactList}\small\item\em Convertit un index dans une grille en coordonnées (x, y). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{demineur_8c_a7bc008c8f74e6ddf918e20deaa0fde25}{afficher\+Grille}} (int taille\+\_\+grille, char grille\+\_\+utilisateur\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, int mines\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, int tours\+\_\+brouillage)
+\begin{DoxyCompactList}\small\item\em Affiche la grille de jeu, incluant les cases avec des mines, des bonus/\+malus et le brouillard. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structposition}{position}} \doxymbox{\hyperlink{demineur_8c_a78b839f29734c28e6ecdfa4fc5dce5f6}{entree\+\_\+utilisateur}} (int taille\+\_\+grille)
+\begin{DoxyCompactList}\small\item\em Permet à l\textquotesingle{}utilisateur d\textquotesingle{}entrer une action et des coordonnées pour interagir avec la grille de jeu. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{demineur_8c_a1bd37178b3cff853ffd748df62f849dc}{reveler\+Case}} (int x, int y, int taille\+\_\+grille, int mines\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, char grille\+\_\+utilisateur\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+)
+\begin{DoxyCompactList}\small\item\em Révèle une case sur la grille de jeu, et effectue une révélations récursives si nécessaire. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{demineur_8c_adc2479b44214691dda822a654e90248f}{appliquer\+Bonus\+Malus}} (int valeur\+\_\+case, int \texorpdfstring{$\ast$}{*}vies, int \texorpdfstring{$\ast$}{*}tours\+\_\+brouillage, char \texorpdfstring{$\ast$}{*}case\+\_\+utilisateur)
+\begin{DoxyCompactList}\small\item\em Applique un bonus ou un malus à la partie. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{demineur_8c_a246cc1dc9ec6d70bba7eeca7c8b02cec}{gerer\+Explosion\+Mine}} (int \texorpdfstring{$\ast$}{*}vies, char \texorpdfstring{$\ast$}{*}case\+\_\+utilisateur)
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}explosion d\textquotesingle{}une mine sur la grille. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{demineur_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{demineur_8c_a7bc008c8f74e6ddf918e20deaa0fde25}\index{demineur.c@{demineur.c}!afficherGrille@{afficherGrille}}
+\index{afficherGrille@{afficherGrille}!demineur.c@{demineur.c}}
+\doxysubsubsection{\texorpdfstring{afficherGrille()}{afficherGrille()}}
+{\footnotesize\ttfamily \label{demineur_8c_a7bc008c8f74e6ddf918e20deaa0fde25} 
+void afficher\+Grille (\begin{DoxyParamCaption}\item[{int}]{taille\+\_\+grille}{, }\item[{char}]{grille\+\_\+utilisateur}{\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, }\item[{int}]{mines}{\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, }\item[{int}]{tours\+\_\+brouillage}{}\end{DoxyParamCaption})}
+
+
+
+Affiche la grille de jeu, incluant les cases avec des mines, des bonus/\+malus et le brouillard. 
+
+Cette fonction affiche la grille de jeu dans un format lisible pour l\textquotesingle{}utilisateur. Elle utilise des caractères spéciaux pour représenter les différentes catégories de cases (mines, bonus/\+malus, cellules vides, etc.). Elle prend en compte si le mode brouillard est actif et masque toutes les cases si c\textquotesingle{}est le cas.
+
+
+\begin{DoxyParams}{Parameters}
+{\em taille\+\_\+grille} & La dimension de la grille (nombre de lignes et de colonnes). \\
+\hline
+{\em grille\+\_\+utilisateur} & Un tableau 2D représentant la grille utilisateur. {\ttfamily grille\+\_\+utilisateur\+[i]\+\+[j]\+} représente un chiffre (0, 1, ou 2) indiquant le nombre de mines adjacentes à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+{\em mines} & Un tableau 2D représentant la configuration des mines. {\ttfamily mines\+[i]\+\+[j]\+} indique le nombre de mines à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+{\em tours\+\_\+brouillage} & Le nombre de tours de brouillard effectués par le joueur. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{demineur_8c_adc2479b44214691dda822a654e90248f}\index{demineur.c@{demineur.c}!appliquerBonusMalus@{appliquerBonusMalus}}
+\index{appliquerBonusMalus@{appliquerBonusMalus}!demineur.c@{demineur.c}}
+\doxysubsubsection{\texorpdfstring{appliquerBonusMalus()}{appliquerBonusMalus()}}
+{\footnotesize\ttfamily \label{demineur_8c_adc2479b44214691dda822a654e90248f} 
+void appliquer\+Bonus\+Malus (\begin{DoxyParamCaption}\item[{int}]{valeur\+\_\+case}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{vies}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{tours\+\_\+brouillage}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{case\+\_\+utilisateur}{}\end{DoxyParamCaption})}
+
+
+
+Applique un bonus ou un malus à la partie. 
+
+Cette fonction traite les valeurs spécifiques des cases bonus/\+malus et met à jour les variables correspondantes (nombre de vies, nombre de tours de brouillage) en conséquence.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valeur\+\_\+case} & La valeur de la case (10 pour le malus, 11 pour le bonus). \\
+\hline
+{\em vies} & Un pointeur vers l\textquotesingle{}entier qui contiendra le nombre de vies restantes du joueur. \\
+\hline
+{\em tours\+\_\+brouillage} & Un pointeur vers l\textquotesingle{}entier qui contiendra le nombre de tours de brouillage effectués par le joueur. \\
+\hline
+{\em case\+\_\+utilisateur} & Un pointeur vers la variable char contenant la valeur de la case (utilisé pour afficher un message). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{demineur_8c_a78b839f29734c28e6ecdfa4fc5dce5f6}\index{demineur.c@{demineur.c}!entree\_utilisateur@{entree\_utilisateur}}
+\index{entree\_utilisateur@{entree\_utilisateur}!demineur.c@{demineur.c}}
+\doxysubsubsection{\texorpdfstring{entree\_utilisateur()}{entree\_utilisateur()}}
+{\footnotesize\ttfamily \label{demineur_8c_a78b839f29734c28e6ecdfa4fc5dce5f6} 
+\doxymbox{\hyperlink{structposition}{position}} entree\+\_\+utilisateur (\begin{DoxyParamCaption}\item[{int}]{taille\+\_\+grille}{}\end{DoxyParamCaption})}
+
+
+
+Permet à l\textquotesingle{}utilisateur d\textquotesingle{}entrer une action et des coordonnées pour interagir avec la grille de jeu. 
+
+Cette fonction guide l\textquotesingle{}utilisateur dans le choix de son action (reveler, mettre un drapeau, sauvegarder et quitter) et lui demande les coordonnées x et y de la case sur laquelle il souhaite cliquer. Elle valide les entrées de l\textquotesingle{}utilisateur pour s\textquotesingle{}assurer qu\textquotesingle{}elles sont dans les limites de la grille.
+
+
+\begin{DoxyParams}{Parameters}
+{\em taille\+\_\+grille} & La dimension de la grille (nombre de lignes et de colonnes). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un objet \textquotesingle{}position\textquotesingle{} contenant l\textquotesingle{}action choisie par l\textquotesingle{}utilisateur, ainsi que ses coordonnées x et y. 
+\end{DoxyReturn}
+\Hypertarget{demineur_8c_a246cc1dc9ec6d70bba7eeca7c8b02cec}\index{demineur.c@{demineur.c}!gererExplosionMine@{gererExplosionMine}}
+\index{gererExplosionMine@{gererExplosionMine}!demineur.c@{demineur.c}}
+\doxysubsubsection{\texorpdfstring{gererExplosionMine()}{gererExplosionMine()}}
+{\footnotesize\ttfamily \label{demineur_8c_a246cc1dc9ec6d70bba7eeca7c8b02cec} 
+int gerer\+Explosion\+Mine (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{vies}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{case\+\_\+utilisateur}{}\end{DoxyParamCaption})}
+
+
+
+Gère l\textquotesingle{}explosion d\textquotesingle{}une mine sur la grille. 
+
+Cette fonction réduit le nombre de vies du joueur lorsqu\textquotesingle{}il touche une mine, et gère la fin de partie si le nombre de vies tombe à zéro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vies} & Un pointeur vers l\textquotesingle{}entier qui contiendra le nombre de vies restantes du joueur. \\
+\hline
+{\em case\+\_\+utilisateur} & Un pointeur vers la variable char contenant la valeur de la case (pour mettre à jour la case touchée par une mine). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 si le joueur survit, -\/1 si le joueur est mort. 
+\end{DoxyReturn}
+\Hypertarget{demineur_8c_a46ad1663b7a4447c39b3c4c37b275b28}\index{demineur.c@{demineur.c}!position\_x\_y@{position\_x\_y}}
+\index{position\_x\_y@{position\_x\_y}!demineur.c@{demineur.c}}
+\doxysubsubsection{\texorpdfstring{position\_x\_y()}{position\_x\_y()}}
+{\footnotesize\ttfamily \label{demineur_8c_a46ad1663b7a4447c39b3c4c37b275b28} 
+\doxymbox{\hyperlink{structposition}{position}} position\+\_\+x\+\_\+y (\begin{DoxyParamCaption}\item[{int}]{pos}{, }\item[{int}]{taille\+\_\+grille}{}\end{DoxyParamCaption})}
+
+
+
+Convertit un index dans une grille en coordonnées (x, y). 
+
+Cette fonction prend un index unique représentant une case dans la grille et le convertit en un couple de coordonnées (x, y) qui indiquent la position de cette case sur la grille. Elle gère les grilles dont la taille est supérieure à 1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & L\textquotesingle{}index unique de la case dans la grille. \\
+\hline
+{\em taille\+\_\+grille} & La dimension de la grille (nombre de lignes et de colonnes). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un objet \textquotesingle{}position\textquotesingle{} contenant les coordonnées (x, y) de la case. 
+\end{DoxyReturn}
+\Hypertarget{demineur_8c_a1bd37178b3cff853ffd748df62f849dc}\index{demineur.c@{demineur.c}!revelerCase@{revelerCase}}
+\index{revelerCase@{revelerCase}!demineur.c@{demineur.c}}
+\doxysubsubsection{\texorpdfstring{revelerCase()}{revelerCase()}}
+{\footnotesize\ttfamily \label{demineur_8c_a1bd37178b3cff853ffd748df62f849dc} 
+void reveler\+Case (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{taille\+\_\+grille}{, }\item[{int}]{mines}{\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, }\item[{char}]{grille\+\_\+utilisateur}{\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+}\end{DoxyParamCaption})}
+
+
+
+Révèle une case sur la grille de jeu, et effectue une révélations récursives si nécessaire. 
+
+Cette fonction prend les coordonnées d\textquotesingle{}une case et révèle sa valeur si elle contient une mine ou un nombre de mines adjacentes. Si la case révélée a des cases adjacentes non révélées, elle effectue une révélation récursive sur ces cases.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & La coordonnée x de la case à révéler. \\
+\hline
+{\em y} & La coordonnée y de la case à révéler. \\
+\hline
+{\em taille\+\_\+grille} & La dimension de la grille (nombre de lignes et de colonnes). \\
+\hline
+{\em mines} & Un tableau 2D représentant la configuration des mines. {\ttfamily mines\+[i]\+\+[j]\+} indique le nombre de mines à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+{\em grille\+\_\+utilisateur} & Un tableau 2D représentant la grille utilisateur. {\ttfamily grille\+\_\+utilisateur\+[i]\+\+[j]\+} sera mis à jour pour afficher la valeur de la case révélée. \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,59 @@
+\doxysection{demineur.\+h}
+\hypertarget{demineur_8h_source}{}\label{demineur_8h_source}\doxymbox{\hyperlink{demineur_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ romain\ on\ 25/05/2026.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ PROJET\_IF2\_DEMINEUR\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ PROJET\_IF2\_DEMINEUR\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PROJET\_IF2\_DEMINEUR\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structposition_aad0117268685890818989a6c0112ab8a}{x}};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structposition_ab7163210f8aa5e8dc68ef434a315792c}{y}};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structposition_a1bb6bd41a17d71570d60c13f9b906e0e}{action}};\ \textcolor{comment}{//\ 1\ =\ Révéler,\ 2\ =\ Drapeau}}
+\DoxyCodeLine{00022\ \}\doxymbox{\hyperlink{structposition}{position}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \doxymbox{\hyperlink{structposition}{position}}\ \doxymbox{\hyperlink{demineur_8h_a46ad1663b7a4447c39b3c4c37b275b28}{position\_x\_y}}(\textcolor{keywordtype}{int}\ pos,\ \textcolor{keywordtype}{int}\ taille\_grille);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{demineur_8h_a7bc008c8f74e6ddf918e20deaa0fde25}{afficherGrille}}(\textcolor{keywordtype}{int}\ taille\_grille,\ \textcolor{keywordtype}{char}\ grille\_utilisateur[taille\_grille][taille\_grille],\ \textcolor{keywordtype}{int}\ mines[taille\_grille][taille\_grille],\ \textcolor{keywordtype}{int}\ tours\_brouillage);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \doxymbox{\hyperlink{structposition}{position}}\ \doxymbox{\hyperlink{demineur_8h_a78b839f29734c28e6ecdfa4fc5dce5f6}{entree\_utilisateur}}(\textcolor{keywordtype}{int}\ taille\_grille);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{demineur_8h_a1bd37178b3cff853ffd748df62f849dc}{revelerCase}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ taille\_grille,\ \textcolor{keywordtype}{int}\ mines[taille\_grille][taille\_grille],\ \textcolor{keywordtype}{char}\ grille\_utilisateur[taille\_grille][taille\_grille]);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{demineur_8h_adc2479b44214691dda822a654e90248f}{appliquerBonusMalus}}(\textcolor{keywordtype}{int}\ valeur\_case,\ \textcolor{keywordtype}{int}\ *vies,\ \textcolor{keywordtype}{int}\ *tours\_brouillage,\ \textcolor{keywordtype}{char}\ *case\_utilisateur);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{demineur_8h_a246cc1dc9ec6d70bba7eeca7c8b02cec}{gererExplosionMine}}(\textcolor{keywordtype}{int}\ *vies,\ \textcolor{keywordtype}{char}\ *case\_utilisateur);}
+
+\end{DoxyCode}

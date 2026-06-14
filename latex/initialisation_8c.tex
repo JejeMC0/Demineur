@@ -1,0 +1,164 @@
+\doxysection{initialisation.\+c File Reference}
+\hypertarget{initialisation_8c}{}\label{initialisation_8c}\index{initialisation.c@{initialisation.c}}
+{\ttfamily \+\#include "{}initialisation.\+h"{}}\newline
+{\ttfamily \+\#include $<$math.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{initialisation_8c_adbda59543e72ec76cc79d68fa424554d}{selectionner\+Option\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Permet à l\textquotesingle{}utilisateur de choisir une option dans un menu principal. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structregle}{regle}} \doxymbox{\hyperlink{initialisation_8c_a703579b17cc6ee540c536d058481671b}{configuration\+Partie}} ()
+\begin{DoxyCompactList}\small\item\em Permet à l\textquotesingle{}utilisateur de configurer les paramètres d\textquotesingle{}une partie (mode, dimension, difficulté). \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{initialisation_8c_a517dd0b79fd27d1648c9ad71eea6e0bb}{mine\+Difficulte}} (\doxymbox{\hyperlink{structregle}{regle}} Configuration)
+\begin{DoxyCompactList}\small\item\em Détermine le nombre de mines à placer sur la grille en fonction de la difficulté sélectionnée. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{initialisation_8c_a64cff63b1c7cab42d841210a306a2e7b}{genere\+Position\+Mines}} (int nb\+\_\+mine, int valeur\+\_\+mines\+[nb\+\_\+mine]\+, int taille\+\_\+grille)
+\begin{DoxyCompactList}\small\item\em Génère les positions des mines sur la grille. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{initialisation_8c_a84bda3a9635bf6f45f48f4500a9fb8fb}{valeur\+Case\+Autour\+Mine}} (int taille\+\_\+grille, int mines\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+)
+\begin{DoxyCompactList}\small\item\em Calcule et met à jour les valeurs des cases autour des mines sur la grille. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{initialisation_8c_a424ab0371197168b833a4e27ed6f65a2}{genere\+Position\+Brouillage}} (int nb\+\_\+case\+Brouillard, int taille\+\_\+grille, int mines\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, int objets\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+)
+\begin{DoxyCompactList}\small\item\em Génère les positions du brouillard (case brouillée) sur la grille. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{initialisation_8c_aab2fbabbed1e13766ca33982a7fc338d}{genere\+Position1\+UP}} (int nb\+\_\+case\+UP, int taille\+\_\+grille, int mines\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, int objets\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+)
+\begin{DoxyCompactList}\small\item\em Génère les positions des cases 1UP (bonus) sur la grille. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{initialisation_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{initialisation_8c_a703579b17cc6ee540c536d058481671b}\index{initialisation.c@{initialisation.c}!configurationPartie@{configurationPartie}}
+\index{configurationPartie@{configurationPartie}!initialisation.c@{initialisation.c}}
+\doxysubsubsection{\texorpdfstring{configurationPartie()}{configurationPartie()}}
+{\footnotesize\ttfamily \label{initialisation_8c_a703579b17cc6ee540c536d058481671b} 
+\doxymbox{\hyperlink{structregle}{regle}} configuration\+Partie (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Permet à l\textquotesingle{}utilisateur de configurer les paramètres d\textquotesingle{}une partie (mode, dimension, difficulté). 
+
+Cette fonction guide l\textquotesingle{}utilisateur dans le choix des options pour configurer une nouvelle partie. Elle utilise des boucles {\ttfamily do-\/while} pour valider les entrées de l\textquotesingle{}utilisateur et s\textquotesingle{}assurer qu\textquotesingle{}elles sont dans les plages autorisées. Elle retourne un objet \textquotesingle{}regle\textquotesingle{} contenant ces paramètres configurés.
+
+\begin{DoxyReturn}{Returns}
+Un objet \textquotesingle{}regle\textquotesingle{} contenant les paramètres de configuration de la partie (mode, dimension, difficulté). 
+\end{DoxyReturn}
+\Hypertarget{initialisation_8c_aab2fbabbed1e13766ca33982a7fc338d}\index{initialisation.c@{initialisation.c}!generePosition1UP@{generePosition1UP}}
+\index{generePosition1UP@{generePosition1UP}!initialisation.c@{initialisation.c}}
+\doxysubsubsection{\texorpdfstring{generePosition1UP()}{generePosition1UP()}}
+{\footnotesize\ttfamily \label{initialisation_8c_aab2fbabbed1e13766ca33982a7fc338d} 
+void genere\+Position1\+UP (\begin{DoxyParamCaption}\item[{int}]{nb\+\_\+case\+UP}{, }\item[{int}]{taille\+\_\+grille}{, }\item[{int}]{mines}{\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, }\item[{int}]{objets}{\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+}\end{DoxyParamCaption})}
+
+
+
+Génère les positions des cases 1UP (bonus) sur la grille. 
+
+Cette fonction place aléatoirement le nombre de cases 1UP spécifié sur la grille, en s\textquotesingle{}assurant qu\textquotesingle{}elles ne se trouvent pas sur des mines ou sur d\textquotesingle{}autres objets (bonus/\+malus). Elle utilise une boucle {\ttfamily do-\/while} pour garantir que chaque position choisie est valide.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb\+\_\+case\+UP} & Le nombre de cases 1UP à placer sur la grille. \\
+\hline
+{\em taille\+\_\+grille} & La dimension de la grille (nombre de lignes et de colonnes). \\
+\hline
+{\em mines} & Un tableau 2D représentant la configuration des mines. {\ttfamily mines\+[i]\+\+[j]\+} indique le nombre de mines à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+{\em objets} & Un tableau 2D représentant les bonus et malus appliqués au joueur. {\ttfamily objets\+[i]\+\+[j]\+} indique le bonus ou malus appliqué à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{initialisation_8c_a424ab0371197168b833a4e27ed6f65a2}\index{initialisation.c@{initialisation.c}!generePositionBrouillage@{generePositionBrouillage}}
+\index{generePositionBrouillage@{generePositionBrouillage}!initialisation.c@{initialisation.c}}
+\doxysubsubsection{\texorpdfstring{generePositionBrouillage()}{generePositionBrouillage()}}
+{\footnotesize\ttfamily \label{initialisation_8c_a424ab0371197168b833a4e27ed6f65a2} 
+void genere\+Position\+Brouillage (\begin{DoxyParamCaption}\item[{int}]{nb\+\_\+case\+Brouillard}{, }\item[{int}]{taille\+\_\+grille}{, }\item[{int}]{mines}{\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+, }\item[{int}]{objets}{\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+}\end{DoxyParamCaption})}
+
+
+
+Génère les positions du brouillard (case brouillée) sur la grille. 
+
+Cette fonction place aléatoirement le nombre de cases brouillées spécifié sur la grille, en s\textquotesingle{}assurant qu\textquotesingle{}elles ne se trouvent pas sur des mines ou sur d\textquotesingle{}autres objets (bonus/\+malus). Elle utilise une boucle {\ttfamily do-\/while} pour garantir que chaque position choisie est valide.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb\+\_\+case\+Brouillard} & Le nombre de cases à brouiller sur la grille. \\
+\hline
+{\em taille\+\_\+grille} & La dimension de la grille (nombre de lignes et de colonnes). \\
+\hline
+{\em mines} & Un tableau 2D représentant la configuration des mines. {\ttfamily mines\+[i]\+\+[j]\+} indique le nombre de mines à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+{\em objets} & Un tableau 2D représentant les bonus et malus appliqués au joueur. {\ttfamily objets\+[i]\+\+[j]\+} indique le bonus ou malus appliqué à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{initialisation_8c_a64cff63b1c7cab42d841210a306a2e7b}\index{initialisation.c@{initialisation.c}!generePositionMines@{generePositionMines}}
+\index{generePositionMines@{generePositionMines}!initialisation.c@{initialisation.c}}
+\doxysubsubsection{\texorpdfstring{generePositionMines()}{generePositionMines()}}
+{\footnotesize\ttfamily \label{initialisation_8c_a64cff63b1c7cab42d841210a306a2e7b} 
+void genere\+Position\+Mines (\begin{DoxyParamCaption}\item[{int}]{nb\+\_\+mine}{, }\item[{int}]{valeur\+\_\+mines}{\+[nb\+\_\+mine]\+, }\item[{int}]{taille\+\_\+grille}{}\end{DoxyParamCaption})}
+
+
+
+Génère les positions des mines sur la grille. 
+
+Cette fonction place aléatoirement le nombre de mines spécifié sur une grille donnée. Elle utilise un algorithme pour éviter que plusieurs mines ne soient placées aux mêmes coordonnées et stocke les positions des mines dans un tableau.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb\+\_\+mine} & Le nombre de mines à placer sur la grille. \\
+\hline
+{\em valeur\+\_\+mines} & Un tableau 2D (en réalité, un tableau 1D) qui contiendra les coordonnées (indices) des mines. {\ttfamily valeur\+\_\+mines\+[i]\+} sera l\textquotesingle{}indice (ligne et colonne) d\textquotesingle{}une mine sur la grille. \\
+\hline
+{\em taille\+\_\+grille} & La dimension de la grille (nombre de lignes et de colonnes). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{initialisation_8c_a517dd0b79fd27d1648c9ad71eea6e0bb}\index{initialisation.c@{initialisation.c}!mineDifficulte@{mineDifficulte}}
+\index{mineDifficulte@{mineDifficulte}!initialisation.c@{initialisation.c}}
+\doxysubsubsection{\texorpdfstring{mineDifficulte()}{mineDifficulte()}}
+{\footnotesize\ttfamily \label{initialisation_8c_a517dd0b79fd27d1648c9ad71eea6e0bb} 
+int mine\+Difficulte (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structregle}{regle}}}]{Configuration}{}\end{DoxyParamCaption})}
+
+
+
+Détermine le nombre de mines à placer sur la grille en fonction de la difficulté sélectionnée. 
+
+Cette fonction prend l\textquotesingle{}objet \textquotesingle{}regle\textquotesingle{} contenant les paramètres de configuration de la partie et calcule le nombre de mines nécessaires pour un niveau de difficulté donné. Elle utilise une structure {\ttfamily switch} pour déterminer le nombre de mines approprié en fonction du choix de l\textquotesingle{}utilisateur (facile, moyen ou difficile).
+
+
+\begin{DoxyParams}{Parameters}
+{\em Configuration} & Un objet \textquotesingle{}regle\textquotesingle{} contenant les paramètres de configuration de la partie (mode, dimension, difficulté). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le nombre de mines calculé (un entier arrondi au plus proche). 
+\end{DoxyReturn}
+\Hypertarget{initialisation_8c_adbda59543e72ec76cc79d68fa424554d}\index{initialisation.c@{initialisation.c}!selectionnerOptionMenu@{selectionnerOptionMenu}}
+\index{selectionnerOptionMenu@{selectionnerOptionMenu}!initialisation.c@{initialisation.c}}
+\doxysubsubsection{\texorpdfstring{selectionnerOptionMenu()}{selectionnerOptionMenu()}}
+{\footnotesize\ttfamily \label{initialisation_8c_adbda59543e72ec76cc79d68fa424554d} 
+int selectionner\+Option\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Permet à l\textquotesingle{}utilisateur de choisir une option dans un menu principal. 
+
+Cette fonction affiche un menu avec les options démarrer une partie, reprendre une partie ou quitter le jeu. Elle valide ensuite l\textquotesingle{}entrée de l\textquotesingle{}utilisateur pour s\textquotesingle{}assurer qu\textquotesingle{}il choisit une option valide (1, 2 ou 3).
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}entier représentant le choix de l\textquotesingle{}utilisateur (1, 2 ou 3). 
+\end{DoxyReturn}
+\Hypertarget{initialisation_8c_a84bda3a9635bf6f45f48f4500a9fb8fb}\index{initialisation.c@{initialisation.c}!valeurCaseAutourMine@{valeurCaseAutourMine}}
+\index{valeurCaseAutourMine@{valeurCaseAutourMine}!initialisation.c@{initialisation.c}}
+\doxysubsubsection{\texorpdfstring{valeurCaseAutourMine()}{valeurCaseAutourMine()}}
+{\footnotesize\ttfamily \label{initialisation_8c_a84bda3a9635bf6f45f48f4500a9fb8fb} 
+void valeur\+Case\+Autour\+Mine (\begin{DoxyParamCaption}\item[{int}]{taille\+\_\+grille}{, }\item[{int}]{mines}{\+[taille\+\_\+grille]\+\+[taille\+\_\+grille]\+}\end{DoxyParamCaption})}
+
+
+
+Calcule et met à jour les valeurs des cases autour des mines sur la grille. 
+
+Cette fonction parcourt chaque case de la grille et, si une case est identifiée comme étant une mine (valeur 9), elle incrémente le nombre de mines adjacentes à toutes les cases voisines (dans les huit directions).
+
+
+\begin{DoxyParams}{Parameters}
+{\em taille\+\_\+grille} & La dimension de la grille (nombre de lignes et de colonnes). \\
+\hline
+{\em mines} & Un tableau 2D représentant la configuration des mines. {\ttfamily mines\+[i]\+\+[j]\+} indique le nombre de mines à l\textquotesingle{}intersection de la ligne {\ttfamily i} et de la colonne {\ttfamily j}. \\
+\hline
+\end{DoxyParams}

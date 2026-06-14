@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['sauvegardepartie_0',['sauvegardePartie',['../sauvegarde_8c.html#a6314e8d514e6021013a5f4b18239b472',1,'sauvegardePartie(const char *nom_fichier, int taille_grille, int nb_mine, int mines[taille_grille][taille_grille], char grille_utilisateur[taille_grille][taille_grille], int mode, int vies, int tours_brouillage, int objets[taille_grille][taille_grille], int temps_ecoule):&#160;sauvegarde.c'],['../sauvegarde_8h.html#a6314e8d514e6021013a5f4b18239b472',1,'sauvegardePartie(const char *nom_fichier, int taille_grille, int nb_mine, int mines[taille_grille][taille_grille], char grille_utilisateur[taille_grille][taille_grille], int mode, int vies, int tours_brouillage, int objets[taille_grille][taille_grille], int temps_ecoule):&#160;sauvegarde.c']]],
+  ['selectionneroptionmenu_1',['selectionnerOptionMenu',['../initialisation_8c.html#adbda59543e72ec76cc79d68fa424554d',1,'selectionnerOptionMenu():&#160;initialisation.c'],['../initialisation_8h.html#adbda59543e72ec76cc79d68fa424554d',1,'selectionnerOptionMenu():&#160;initialisation.c']]]
+];
